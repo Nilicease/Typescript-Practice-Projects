@@ -15,7 +15,7 @@ export function DisplayTask() {
     const ListOfTask = document.querySelector("#ListOfTask");
     ListOfTask.innerHTML = data.map(tasks => `
         <tr>
-            <td><input type="checkbox" ${tasks.status ? 'checked' : ''}></td>
+            <td><input class="status" type="checkbox" ${tasks.status ? 'checked' : ''}></td>
             <td>${tasks.title}</td>
             <td><button class="btn-delete" id="${tasks.id}">Delete</button></td>
         </tr>
@@ -28,6 +28,17 @@ export function RemoveTask(id) {
         return;
     const tasks = JSON.parse(data);
     const updatedTasks = tasks.filter(task => task.id !== id);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+}
+export function UpdateTaskStatus(id, status) {
+    const raw = LoadTask();
+    const data = raw === "No data" ? [] : JSON.parse(raw);
+    const updatedTasks = data.map(task => {
+        if (task.id === id) {
+            return { ...task, status: status };
+        }
+        return task;
+    });
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 }
 function GenerateID() {

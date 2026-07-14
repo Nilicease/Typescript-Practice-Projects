@@ -4,6 +4,7 @@ import { LoadTask } from "./storage.js";
 import { DisplayTask } from "./todo.js";
 import { RemoveTask } from "./todo.js";
 import { ClearAllTask } from "./storage.js";
+import { UpdateTaskStatus } from "./todo.js";
 const form = document.querySelector("#formReq");
 const ListOfTask = document.querySelector("#ListOfTask");
 const ClearButton = document.querySelector("#btn-clear");
@@ -33,6 +34,18 @@ ListOfTask?.addEventListener('click', (event) => {
         task = task.filter(t => t.id !== id);
         DisplayTask();
     }
+});
+const status = document.querySelectorAll(".status").forEach((checkbox) => {
+    checkbox.addEventListener('change', (event) => {
+        const target = event.target;
+        const row = target.closest('tr');
+        if (!row)
+            return;
+        const id = parseInt(row.querySelector('.btn-delete')?.id || '');
+        const status = target.checked;
+        UpdateTaskStatus(id, status);
+        task = task.map(t => t.id === id ? { ...t, status } : t);
+    });
 });
 ClearButton?.addEventListener('click', () => {
     ClearAllTask();
