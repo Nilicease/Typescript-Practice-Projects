@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To do List</title>
+</head>
+<body>
+    <main>
+        <section id="CRUD">
+
+            <form id="formReq">
+                <input type="text" name="todo" id="todo" placeholder="Add to list" required>
+                <button class="button" type="submit">Add</button>
+            </form>
+        </section>
+        <section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>To do</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="ListOfTask">
+                </tbody>
+            </table>
+            <button class="button" id="btn-clear">Clear All</button>
+        </section>
+    </main>
+</body>
+    <script type="module" src="dist/script.js"></script>
+</html>
