@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+
+<main class="container">
+
+    <h1>Weather Dashboard</h1>
+
+    <form id="weatherForm">
+
+        <input
+            id="city"
+            type="text"
+            placeholder="Enter city"
+            required
+        >
+
+        <button id="search-button" type="button">
+            Search
+        </button>
+
+    </form>
+
+    <section id="loading">
+                <div class="skeleton title"></div>
+
+        <div class="skeleton line"></div>
+        <div class="skeleton line"></div>
+        <div class="skeleton line"></div>
+        <div class="skeleton line"></div>
+        <div class="skeleton line"></div>
+        <div class="skeleton line"></div>
+    </section>
+
+    <section id="error">
+    </section>
+
+    <section id="weather">
+
+    </section>
+
+</main>
+
+<script type="module" src="dist/script.js"></script>
+
+</body>
+</html>
